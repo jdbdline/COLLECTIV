@@ -20,7 +20,6 @@ class My_User
 
     /*
      * If an ID been set do object population from db otherwise population is done externally
-     * todo : review statement post refactoring
      */
     public function set_details($parameters)
     {

@@ -24,10 +24,7 @@ class User extends CI_Controller {
         $this->load->view('user/add_user');
         $this->load->view('includes/footer');
     }
-//
-//    // using the class
-//$administrator = new My_User("John", "Doe");
-//echo $administrator->showInfo(); // should output
+
 
     public function add_user(){
 
@@ -43,7 +40,6 @@ class User extends CI_Controller {
 
         $this->load->model("user_model");
 
-        //todo : maybe refactor to class?
         $id = trim($this->input->post('id'));
 
         if($id > 0){
@@ -94,7 +90,7 @@ class User extends CI_Controller {
 
     public function list_users(){
         $this->load->model("user_model");
-        //todo : maybe refactor to class?
+
         $data['users'] = $this->user_model->list_users();
 
       
@@ -106,80 +102,11 @@ class User extends CI_Controller {
 
     public function refresh_list_users(){
         $this->load->model("user_model");
-        //todo : maybe refactor to class?
-        $data['users'] = $this->user_model->list_users();
 
+        $data['users'] = $this->user_model->list_users();
 
         $this->load->view('user/list_users',$data);
     }
 
-    public function test_db(){
-        echo "hi there2";
 
-        $this->load->library('My_Pdo_connector');
-        
-        
-        $this->my_pdo_connector->select(array('*'),'users' , '');
-
-    }
-
-    public function test_insert(){
-        echo "hi there2";
-
-        $this->load->library('My_Pdo_connector');
-        
-
-        
-        $object = array(
-            'first_name' => 'naam', 
-            'surname' => 'van', 
-            'email' => 'mail@swale.com', 
-            'username' => 'unaam', 
-            'password' => 'pw' 
-
-            );
-        $this->my_pdo_connector->insert($object,'users');
-
-
-    }
-
-
-    public function test_update(){
-        echo "hi update";
-
-        $this->load->library('My_Pdo_connector');
-        
- 
-
-        
-        $object = array(
-            'first_name' => 'naam', 
-            'surname' => 'van', 
-            'email' => 'mail@swale.com', 
-            'username' => 'unaam', 
-            'password' => 'pw' 
-
-            );
-        $this->my_pdo_connector->update($object,'users','id = 4');
-
-
-    }
-
-    public function test_db3(){
-        echo "hi there4";
-
-              $this->load->database();
-
-        echo '<pre>';     
-        var_dump($this->db->get('users')->result_array());
-        echo '</pre>';
-    }
-
-    public function test_delete(){
-
-        echo "hi 6";
-
-        $this->load->library('My_Pdo_connector');
-        $this->my_pdo_connector->delete('users','id = 4');
-    }
 }

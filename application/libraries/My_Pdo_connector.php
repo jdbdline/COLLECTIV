@@ -66,9 +66,6 @@ class My_Pdo_connector extends Database_connector{
 			}
 
 
-
-
-						
 		    $stmt = $this->conn->prepare('select '.$cols_separated.'
 		    						from '.$table.' '.$where_clause .' order by id asc ',
 		        array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true));
@@ -93,8 +90,6 @@ class My_Pdo_connector extends Database_connector{
 		if ($this->conn->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql') {
 			$cols = array();
 			$vals = array();
-			$cols_str = '';
-			$vals_str = '';
 
 			unset($objects['id']);
 
@@ -122,8 +117,6 @@ class My_Pdo_connector extends Database_connector{
 		if ($this->conn->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql') {
 			$set_list = array();
 
-			//unset id??
-
 			foreach ($obj as $key => $value){
 				array_push($set_list,$key."='".$value."'");
 			}
@@ -136,8 +129,6 @@ class My_Pdo_connector extends Database_connector{
 				$where_clause = ' where '.$where;
 			}
 
-			var_dump('update '.$table.' set '.$set_list_str.'
-		    						 '.$where_clause);
 		    $stmt = $this->conn->prepare('update '.$table.' set '.$set_list_str.'
 		    						 '.$where_clause,
 		        array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true));
@@ -151,7 +142,6 @@ class My_Pdo_connector extends Database_connector{
 
 	  public function delete($table,$where){
 		if ($this->conn->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql') {
-			$set_list = array();
 
 		    $stmt = $this->conn->prepare('delete from '.$table.' where '.$where,
 		        array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true));
