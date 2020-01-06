@@ -75,6 +75,6 @@
 
     <img src="<?=base_url('application/assets/img/logo.svg');?>" style="height:30px; margin:15px;" class="pull-left inline-block">
     <div class="inline-block" style="float: right; margin-top: 15px; margin-right: 15px; ">
-        <h9 >PHP Test</h9>
+        <h9 >PHP </h9>
     </div>
 </div>
